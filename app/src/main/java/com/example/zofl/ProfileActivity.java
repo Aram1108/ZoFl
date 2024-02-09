@@ -8,15 +8,15 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MainActivity3 extends AppCompatActivity {
-    ImageButton profile;
+public class ProfileActivity extends AppCompatActivity {
+    ImageButton animal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.animals);
-        profile = findViewById(R.id.profile_button1);
-        profile.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_profile);
+        animal = findViewById(R.id.animal_button1);
+        animal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switchActivities();
@@ -24,7 +24,7 @@ public class MainActivity3 extends AppCompatActivity {
         });
     }
     private void switchActivities(){
-        Intent switchActivityIntent = new Intent(this, ProfileActivity.class);
+        Intent switchActivityIntent = new Intent(this, MainActivity3.class);
         startActivity(switchActivityIntent);
     }
 }

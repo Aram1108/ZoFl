@@ -73,7 +73,7 @@ public class login extends AppCompatActivity{
             String emailValue = email.getText().toString();
             String passwordValue = password.getText().toString();
             if (emailValue.equals("test@test.com") && passwordValue.equals("password1234")) {
-                Intent i = new Intent(com.example.zofl.login.this, MainActivity2.class);
+                Intent i = new Intent(com.example.zofl.login.this, MainActivity3.class);
                 startActivity(i);
 
                 this.finish();

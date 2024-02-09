@@ -10,22 +10,22 @@
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="65dp"
         android:orientation="horizontal"
         android:background="@color/green">
         <ImageButton
             android:id="@+id/animal_button2"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/green"
-            android:src="@drawable/pawprint"/>
+            android:backgroundTint="@color/white"
+            android:src="@drawable/pawprintgreen"/>
         <ImageButton
             android:id="@+id/plant_button2"
             android:layout_marginLeft="10dp"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/green"
-            android:src="@drawable/leaf"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/leafgreen"
             />
     </LinearLayout>
 

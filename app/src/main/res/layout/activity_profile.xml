@@ -23,7 +23,7 @@
         android:background="@color/white">
         <ImageButton
             android:id="@+id/animal_button1"
-            android:layout_width="75dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
             android:src="@drawable/pawprintred"/>
@@ -78,25 +78,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:id="@+id/linearsc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/linearpro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <ImageButton
-                    android:id="@+id/vertebrates"
+                    android:id="@+id/profilepic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/verte"
+                    android:src="@drawable/propic"
                     android:background="@color/white"
                     android:layout_marginBottom="10dp"
-                    android:layout_gravity="center"/>
-                <ImageButton
-                    android:id="@+id/invertebrates"
+                    android:layout_gravity="left"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/inver"
-                    android:background="@color/white"
-                    android:layout_gravity="center"/>
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+                        android:layout_margin="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rank #??"
+                        android:textSize="30dp"
+                        android:textColor="@color/gray"
+                        android:layout_margin="7dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

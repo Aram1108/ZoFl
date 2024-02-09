@@ -2,8 +2,6 @@ package com.example.zofl;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
@@ -41,24 +38,20 @@ public class SignupActivity extends AppCompatActivity{
         signup = findViewById(R.id.signup);
 
         Pattern emailPattern = Patterns.EMAIL_ADDRESS;
-        Account[] accounts = AccountManager.get(context).getAccounts();
-        for (Account account : accounts) {
-            if (emailPattern.matcher(account.name).matches()) {
-                String possibleEmail = account.name;
-        switchToSignupActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
+                switchToSignupActivity.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        switchActivities();
+                    }
+                });
+                signup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        checkDataEntered();
+                    }
+                });
             }
-        });
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkDataEntered();
-            }
-        });
-    }
-    void checkDataEntered(){
+            void checkDataEntered(){
         boolean isValid = true;
         if (isEmpty(username)) {
             username.setError("username is required!");
@@ -101,4 +94,5 @@ public class SignupActivity extends AppCompatActivity{
         CharSequence email = text.getText().toString();
         return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
+
 }
