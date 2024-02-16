@@ -1,6 +1,8 @@
 package com.example.zofl;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,21 +14,54 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class login extends AppCompatActivity{
 
-    TextView switchToSignupActivity;
-    EditText email;
-    EditText password;
-    Button login;
+    private TextView switchToSignupActivity;
+    private FirebaseAuth auth;
+    private EditText email;
+    private EditText password;
+    private Button login;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        auth = FirebaseAuth.getInstance();
 
         setContentView(R.layout.login);
-        setupUI();
-        setupListeners();
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Email = email.getText().toString();
+                String pass = password.getText().toString();
+                if(!Email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
+                    if(!pass.isEmpty()){
+                        auth.signInWithEmailAndPassword(Email, pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                checkEmail();
+                            }
+                        });
+                        auth.signInWithEmailAndPassword(Email, pass).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(login.this, "Wrong email or password!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }
+        });
         switchToSignupActivity= findViewById(R.id.signup);
         switchToSignupActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,19 +74,6 @@ public class login extends AppCompatActivity{
     private void switchActivities() {
         Intent switchActivityIntent = new Intent(this, SignupActivity.class);
         startActivity(switchActivityIntent);
-    }
-    private void setupUI() {
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        login = findViewById(R.id.login);
-    }
-    private void setupListeners() {
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkEmail();
-            }
-        });
     }
     void checkEmail(){
         boolean isValid = true;
@@ -72,16 +94,10 @@ public class login extends AppCompatActivity{
         if (isValid) {
             String emailValue = email.getText().toString();
             String passwordValue = password.getText().toString();
-            if (emailValue.equals("test@test.com") && passwordValue.equals("password1234")) {
-                Intent i = new Intent(com.example.zofl.login.this, MainActivity3.class);
-                startActivity(i);
-
-                this.finish();
-            }
-            else{
-                Toast t = Toast.makeText(this,"Wrong email or password!",Toast.LENGTH_SHORT);
-                t.show();
-            }
+            Intent i = new Intent(com.example.zofl.login.this, MainActivity3.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            finish();
         }
     }
     boolean isEmail(EditText text) {

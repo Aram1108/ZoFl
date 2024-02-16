@@ -1,5 +1,6 @@
 package com.example.zofl;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,18 +11,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
 
 public class SignupActivity extends AppCompatActivity{
 
-    TextView switchToSignupActivity;
-    EditText username;
-    EditText email;
-    EditText password;
-    EditText passwordRepeat;
-    Button signup;
+    private TextView switchToSignupActivity;
+    private FirebaseAuth auth;
+    private EditText username;
+    private EditText email;
+    private EditText password;
+    private EditText passwordRepeat;
+    private Button signup;
 
 
 
@@ -36,8 +44,7 @@ public class SignupActivity extends AppCompatActivity{
         password = findViewById(R.id.password);
         passwordRepeat = findViewById(R.id.passwordrepeat);
         signup = findViewById(R.id.signup);
-
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS;
+        auth = FirebaseAuth.getInstance();
                 switchToSignupActivity.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -47,11 +54,27 @@ public class SignupActivity extends AppCompatActivity{
                 signup.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String user = email.getText().toString().trim();
+                        String pass = password.getText().toString().trim();
                         checkDataEntered();
+                        if (!pass.isEmpty()){
+                            auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(SignupActivity.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
+                                        switchActivities();
+                                    }
+                                    else {
+                                        Toast.makeText(SignupActivity.this, "SignUp Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
                     }
                 });
             }
-            void checkDataEntered(){
+    void checkDataEntered(){
         boolean isValid = true;
         if (isEmpty(username)) {
             username.setError("username is required!");
@@ -84,7 +107,9 @@ public class SignupActivity extends AppCompatActivity{
     }
     private void switchActivities() {
         Intent switchActivityIntent = new Intent(this, login.class);
+        switchActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(switchActivityIntent);
+        finish();
     }
     boolean isEmpty(EditText text) {
         CharSequence str = text.getText().toString();

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
     ImageButton animal;
@@ -14,7 +13,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_red);
         animal = findViewById(R.id.animal_button1);
         animal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +24,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
     private void switchActivities(){
         Intent switchActivityIntent = new Intent(this, MainActivity3.class);
+        switchActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(switchActivityIntent);
+        finish();
     }
 }

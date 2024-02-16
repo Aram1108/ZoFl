@@ -23,41 +23,36 @@
         android:background="@color/white">
         <ImageButton
             android:id="@+id/animal_button1"
-            android:layout_width="70dp"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/pawprintred"/>
+            android:background="@drawable/pawprintred"/>
         <ImageButton
             android:id="@+id/plant_button1"
             android:layout_marginLeft="10dp"
             android:layout_width="75dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/leafred"
+            android:background="@drawable/leafred"
             />
         <ImageButton
             android:id="@+id/book_button1"
             android:layout_marginLeft="10dp"
             android:layout_width="75dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/bookred"
+            android:background="@drawable/bookred"
             />
         <ImageButton
             android:id="@+id/game_button1"
             android:layout_marginLeft="10dp"
-            android:layout_width="75dp"
+            android:layout_width="65dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/redgame"
+            android:background="@drawable/gamered"
             />
         <ImageButton
             android:id="@+id/profile_button1"
             android:layout_marginLeft="10dp"
-            android:layout_width="75dp"
+            android:layout_width="65dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/profilered"
+            android:background="@drawable/profilered"
             />
     </LinearLayout>
     <LinearLayout
