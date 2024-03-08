@@ -6,30 +6,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
-public class MainActivity3 extends AppCompatActivity {
+public class FishesActivity extends AppCompatActivity {
+    ImageButton gwsbtn;
     ImageButton profile;
-    ImageButton vertebrates;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.animals);
+        setContentView(R.layout.activity_fishes);
+        gwsbtn = findViewById(R.id.GWSbtn);
         profile = findViewById(R.id.profile_button1);
-        vertebrates = findViewById(R.id.vertebrates);
-        vertebrates.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchActivities2();
-            }
-        });
-
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switchActivities1();
+            }
+        });
+        gwsbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivities2();
             }
         });
     }
@@ -40,7 +37,7 @@ public class MainActivity3 extends AppCompatActivity {
         finish();
     }
     private void switchActivities2(){
-        Intent switchActivityIntent = new Intent(this, VertebratesActivity.class);
+        Intent switchActivityIntent = new Intent(this, GWSActivity.class);
         switchActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(switchActivityIntent);
         finish();

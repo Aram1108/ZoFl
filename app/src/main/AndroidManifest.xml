@@ -15,6 +15,27 @@
         android:theme="@style/Theme.ZOFL"
         tools:targetApi="31">
         <activity
+            android:name=".GWSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AmphibiansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BirdsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MammalsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReptilesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FishesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VertebratesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
