@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src = "@drawable/logo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        />
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <ImageButton
+            android:id="@+id/animal_button1"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/pawprintred"/>
+        <ImageButton
+            android:id="@+id/plant_button1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/leafred"
+            />
+        <ImageButton
+            android:id="@+id/book_button1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bookred"
+            />
+        <ImageButton
+            android:id="@+id/game_button1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/gamered"
+            />
+        <ImageButton
+            android:id="@+id/profile_button1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/profilered"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <ScrollView
+            android:id="@+id/scroll1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linearsc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/relativesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/game_1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="70dp"
+                        android:background="@drawable/profilered" />
+
+                    <ImageButton
+                        android:id="@+id/game_2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginStart="70dp"
+                        android:background="@drawable/profilered" />
+                    <ImageButton
+                        android:id="@+id/game_3"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/profilered" />
+
+                    <ImageButton
+                        android:id="@+id/game_4"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="70dp"
+                        android:background="@drawable/profilered" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</LinearLayout>

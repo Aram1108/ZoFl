@@ -15,6 +15,18 @@
         android:theme="@style/Theme.ZOFL"
         tools:targetApi="31">
         <activity
+            android:name=".TimeQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LiveQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuizzLivesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GameActivity"
+            android:exported="false" />
+        <activity
             android:name=".GWSActivity"
             android:exported="false" />
         <activity
